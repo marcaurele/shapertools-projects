@@ -53,5 +53,5 @@ d.append(draw.Line(30, -20, 0, -10,
 
 d.setPixelScale(2)  # Set number of pixels per geometry unit
 #d.setRenderSize(400,200)  # Alternative to setPixelScale
-d.saveSvg('example.svg')
-d.savePng('example.png')
+d.saveSvg('drawing-drawSvg.py.svg')
+d.savePng('drawing-drawSvg.py.png')
