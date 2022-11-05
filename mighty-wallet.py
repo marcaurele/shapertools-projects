@@ -7,6 +7,7 @@ class MightyWallet:
     small_corner = 3
     start_x = 97
     start_y = 2
+    stroke = 0.1
 
     def render(self) -> svg.SVG:
         canvas = svg.SVG(
@@ -60,7 +61,7 @@ class MightyWallet:
                     ],
                     fill="black",
                     stroke="black",
-                    stroke_width=0.5,
+                    stroke_width=self.stroke,
                 ),
                 # Window to calibrate front image
                 svg.Path(
@@ -79,7 +80,7 @@ class MightyWallet:
                     ],
                     fill="white",
                     stroke="black",
-                    stroke_width=0.5,
+                    stroke_width=self.stroke,
                 ),
                 # Inside cards window
                 svg.Path(
@@ -92,7 +93,7 @@ class MightyWallet:
                     ],
                     fill="white",
                     stroke="black",
-                    stroke_width=0.5,
+                    stroke_width=self.stroke,
                 ),
             ],
         )
