@@ -3,49 +3,89 @@ import svg
 
 class MightyWallet:
 
+    small_corner = 2.5
+
     def render(self) -> svg.SVG:
         canvas = svg.SVG(
-            width="395mm",
-            height="580mm",
-            viewBox=svg.ViewBoxSpec(0, 0, 395, 580),
+            width="400mm",
+            height="600mm",
+            viewBox=svg.ViewBoxSpec(0, 0, 400, 600),
             elements=[
-                svg.Rect(
-                    width="100%",
-                    height="100%",
-                    fill="#ccc"),
-                svg.Circle(
-                    cx=50, cy=50, r=40, pathLength=30,
-                    stroke="red",
-                    fill="white",
-                    stroke_width=3,
-                ),
                 svg.Path(
                     d=[
-                        svg.M(200, 10),
-                        self._draw_corner(10, 10),
-                        svg.l(0, 200),
-                        self._draw_corner(-10, 10),
-                        svg.l(-30, 0),
-                        self._draw_corner(-10, -10),
-                        svg.l(0, -200),
-                        self._draw_corner(10, -10),
-                        svg.l(30, 0),
+                        svg.M(97, 2),
+                        svg.l(205, 0),
+                        self._draw_corner(self.small_corner, self.small_corner, False),
+                        self._draw_corner(90, 80),
+                        self._draw_corner(-90, 80),
+                        self._draw_corner(-self.small_corner, self.small_corner, False),
+                        self._draw_corner(self.small_corner, self.small_corner, False),
+                        self._draw_corner(90, 80),
+                        self._draw_corner(-90, 80),
+                        self._draw_corner(-self.small_corner, self.small_corner, False),
+                        svg.l(0, 80),
+                        svg.l(0, 80),
+                        self._draw_corner(self.small_corner, self.small_corner, False),
+                        svg.l(40, 0),
+                        self._draw_corner(self.small_corner, self.small_corner),
+                        svg.l(0, 80),
+                        self._draw_corner(-self.small_corner, self.small_corner),
+                        svg.l(-40, 0),
+                        svg.l(-self.small_corner, 0),
+
+                        svg.l(-205, 0),
+
+                        svg.l(-self.small_corner, 0),
+                        svg.l(-40, 0),
+                        self._draw_corner(-self.small_corner, -self.small_corner),
+                        svg.l(0, -80),
+                        self._draw_corner(self.small_corner, -self.small_corner),
+                        svg.l(40, 0),
+                        self._draw_corner(self.small_corner, -self.small_corner, False),
+                        svg.l(0, -80),
+                        svg.l(0, -80),
+                        self._draw_corner(-self.small_corner, -self.small_corner, False),
+                        self._draw_corner(-90, -80),
+                        self._draw_corner(90, -80),
+                        self._draw_corner(self.small_corner, -self.small_corner, False),
+                        self._draw_corner(-self.small_corner, -self.small_corner, False),
+                        self._draw_corner(-90, -80),
+                        self._draw_corner(90, -80),
+                        self._draw_corner(self.small_corner, -self.small_corner, False),
                     ],
                     fill="none",
                     stroke="blue",
+                    stroke_width=0.5,
+                ),
+                svg.Path(
+                    d=[
+                        svg.M(97 + 102.5, 2 + self.small_corner * 2 + 80 + 80 + 10),
+                        svg.l(10, 0),
+                        svg.ArcRel(
+                            rx=1,
+                            ry=1,
+                            angle=0,
+                            large_arc=False,
+                            sweep=True,
+                            dx=5,
+                            dy=7
+                        ),
+                    ],
+                    fill="none",
+                    stroke="red",
                     stroke_width=0.5,
                 ),
             ],
         )
         return canvas
 
-    def _draw_corner(self, dx: int, dy: int) -> svg.ArcRel:
+    def _draw_corner(self, dx: int, dy: int, sweep=True) -> svg.ArcRel:
         return svg.ArcRel(
             rx=abs(dx),
             ry=abs(dy),
             angle=0,
             large_arc=False,
-            sweep=True,
+            sweep=sweep,
             dx=dx,
             dy=dy,
         )
