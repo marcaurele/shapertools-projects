@@ -1,9 +1,12 @@
+from ast import Store
 import svg
 
 
 class MightyWallet:
 
     small_corner = 3
+    start_x = 97
+    start_y = 2
 
     def render(self) -> svg.SVG:
         canvas = svg.SVG(
@@ -11,9 +14,10 @@ class MightyWallet:
             height="600mm",
             viewBox=svg.ViewBoxSpec(0, 0, 400, 600),
             elements=[
+                # Main outer shape
                 svg.Path(
                     d=[
-                        svg.M(97, 2),
+                        svg.M(self.start_x, self.start_y),
                         svg.l(205, 0),
                         self._draw_corner(self.small_corner, self.small_corner, False),
                         self._draw_corner(90, 80),
@@ -31,11 +35,12 @@ class MightyWallet:
                         svg.l(0, 80),
                         self._draw_corner(-self.small_corner, self.small_corner),
                         # svg.l(-40, 0),
-                        svg.l(-self.small_corner, 0),
+                        # svg.l(-self.small_corner, 0),
 
-                        svg.l(-205, 0),
+                        # svg.l(-205, 0),
+                        svg.l(-205 + 2 * self.small_corner, 0),
 
-                        svg.l(-self.small_corner, 0),
+                        # svg.l(-self.small_corner, 0),
                         # svg.l(-40, 0),
                         self._draw_corner(-self.small_corner, -self.small_corner),
                         svg.l(0, -80),
@@ -57,9 +62,29 @@ class MightyWallet:
                     stroke="black",
                     stroke_width=0.5,
                 ),
+                # Window to calibrate front image
                 svg.Path(
                     d=[
-                        svg.M(97 + 102.5, 2 + self.small_corner * 2 + 80 + 80 + 10),
+                        svg.M(self.start_x + 102.5, self.start_y + self.small_corner + 80 + 80 - 10 - self.small_corner),
+                        self._draw_corner(-self.small_corner, self.small_corner),
+                        svg.l(-102 + self.small_corner, 0),
+                        svg.l(0, -80 + 10),
+                        svg.l(102 - self.small_corner, 0),
+                        self._draw_corner(self.small_corner, self.small_corner),
+                        self._draw_corner(self.small_corner, -self.small_corner),
+                        svg.l(102 - self.small_corner, 0),
+                        svg.l(0, 80 - 10),
+                        svg.l(-102 + self.small_corner, 0),
+                        self._draw_corner(-self.small_corner, -self.small_corner),
+                    ],
+                    fill="white",
+                    stroke="black",
+                    stroke_width=0.5,
+                ),
+                # Inside cards window
+                svg.Path(
+                    d=[
+                        svg.M(self.start_x + 102.5, self.start_y + self.small_corner * 2 + 80 + 80 + 10),
                         svg.c(24,0, 20.7,0.2, 28,30),
                         svg.s(12,30,  -28,30),
                         svg.s(-35,0, -28,-30),
