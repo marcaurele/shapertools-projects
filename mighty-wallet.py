@@ -112,7 +112,8 @@ class MightyWallet:
 
 def main():
     wallet = MightyWallet()
-    print(wallet.render())
+    with open("mighty-wallet.svg", "w") as f:
+        f.write(f"{wallet.render()}")
 
 
 if __name__ == "__main__":
