@@ -3,7 +3,7 @@ import svg
 
 class MightyWallet:
 
-    small_corner = 2.5
+    small_corner = 3
 
     def render(self) -> svg.SVG:
         canvas = svg.SVG(
@@ -53,26 +53,20 @@ class MightyWallet:
                         self._draw_corner(90, -80),
                         self._draw_corner(self.small_corner, -self.small_corner, False),
                     ],
-                    fill="none",
-                    stroke="blue",
+                    fill="black",
+                    stroke="black",
                     stroke_width=0.5,
                 ),
                 svg.Path(
                     d=[
                         svg.M(97 + 102.5, 2 + self.small_corner * 2 + 80 + 80 + 10),
-                        svg.l(10, 0),
-                        svg.ArcRel(
-                            rx=1,
-                            ry=1,
-                            angle=0,
-                            large_arc=False,
-                            sweep=True,
-                            dx=5,
-                            dy=7
-                        ),
+                        svg.c(24,0, 20.7,0.2, 28,30),
+                        svg.s(12,30,  -28,30),
+                        svg.s(-35,0, -28,-30),
+                        svg.s(4,-30, 28,-30),
                     ],
-                    fill="none",
-                    stroke="red",
+                    fill="white",
+                    stroke="black",
                     stroke_width=0.5,
                 ),
             ],
