@@ -14,3 +14,8 @@ Python program generating a SVG file to cut a template based on the Mighty walle
 
 - [Generate SVG for pen plotters using Python](https://github.com/tabreturn/cc-fest-plotter#inspiration)
 
+## SVG libraries
+
+- [drawsvg](https://pypi.org/project/drawsvg/)
+- [svgwrite](https://pypi.org/project/svgwrite/)
+- **[svg.py](https://pypi.org/project/svg.py/)**
